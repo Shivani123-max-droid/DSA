@@ -1,18 +1,17 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        if (x < 0 || (x % 10 == 0 && x != 0)) {
-            return false;
+        int n=x;
+        long long sum=0;
+        while(n>0){
+           sum=sum *10;
+           int ld=n%10;
+           sum=sum+ld;
+           n/=10;
         }
-
-        int reversed_half = 0;
-        while (x > reversed_half) {
-            // Extract the last digit and build the reversed number
-            reversed_half = reversed_half * 10 + x % 10;
-            x /= 10;
+        if(sum==x){
+            return true;
         }
-
-        // Compare the two halves (discard the middle digit for odd-length numbers)
-        return x == reversed_half || x == reversed_half / 10;
+        else{return false;}
     }
 };
